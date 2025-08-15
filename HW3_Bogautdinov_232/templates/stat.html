@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Статистика{% endblock %}
+
+{% block content1 %}
+  <h4>1. Наиболее плодотворные авторы</h4>
+  <p>Статистики!!! Итак, дайте, дайте же нам имена наибольших трудяг этого края!</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">автор:ки</th>
+        <th scope="col">сколько понаписали</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in result_1 %}
+      <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p>Överraskande men, как и древнерусские летописцы, сотрудники <a href='https://www.archdaily.com/'>Archdaily</a> предпочитают не оставлять упоминаний о себе... Оно и интересней!</p>
+
+  <h4>2. Сколько статей было выпущено за год</h4>
+  <p>Цифра дня &mdash; подводим итоги года!!</p>
+    {% for row in result_2 %}
+    <div style="font-size: 45px; padding-left: 45px;"><b>{{ row[0] }}</b></div>
+    {% endfor %}
+    <br>
+
+  <h4>3. Месяц с наибольшим количеством статей</h4>
+  <p>В какой месяц было выпущено наибольшее количество статей?</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">месяц</th>
+        <th scope="col">количество статей</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in result_3 %}
+      <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p>В ноябре ребята постарались на славу, всем премия &mdash; <em>Сафонов, неси кошелек!</em></p>
+  <br>
+  
+  <h4>6. Теги в день с наименьшим суммарным количеством использований тегов</h4>
+  <p>Ну и формулировка, что же за ней стоит? 3 декабря 2023 года примечательно тем, что тогда была выпущена всего 1 статья, но это не ново (не первый раз такое). А что ново, так это то, что в этот день было использовано всего 4 тега! кто же эти счастливчики?</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">теги</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in result_6 %}
+      <tr>
+        <td>{{ row[0] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block content2 %}
+  <h4>4. Наиболее популярные теги</h4>
+  <p>10 наиболее популярных тегов, если быть точными</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">тег</th>
+        <th scope="col">и количество статей</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in result_4 %}
+      <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h4>5. Дни с наибольшим количеством тегов</h4>
+  <p>Вот приятно, когда автор:ки не скупятся на теги, очень круто!</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Дата</th>
+        <th scope="col">Количество тегов</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in result_5 %}
+      <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p>Хотя есть вероятность, что проблема возникла еще на этапе сбора данных: не верится, что в один день было использовано почти 400 тегов 0_о</p>
+{% endblock %}

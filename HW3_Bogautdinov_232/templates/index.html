@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %} DB новостей Archdaily {% endblock %}
+
+{% block content1 %}
+    <h1>Описание базы данных, составленной на основе новостей и статей <a href="https://www.archdaily.com/">Archdaily</a></h1>
+    <p>В целом дизайн таблиц видно в UML-модели, но давайте все равно здесь отдельно пропишу, кто за что отвечает и почему именно такая конфигурация таблиц предлагается:
+        <div>
+            <li>сущность <b>TAG: <br>&emsp; tagID (PK), name</b> &mdash; в целом можно было бы спокойно обойтись и без ID, но вдруг когда-нибудь сайт полностью обновит себя, перезапустится и заодно зазахочет обновить все теги, а старые тем не менее сохранить захочет: тогда для одного тега <em>India</em> потребуется два айдишника &mdash; для старого и нового тега;</li>
+            <li>сущность <b>AUTHOR: <br>&emsp; authorID (PK), name</b></li>
+            <li>сущность <b>ARTICLE: <br>&emsp; articleID (PK), title, author (FK), pubDate, link, text</b></li>
+            <li>отношение <b>TAG_ARTICLE: <br>&emsp; tagID (PK, FK), articleID (PK, FK)</b></li>
+            <li>отношение <b>AUTHOR_ARTICLE: <br>&emsp; authorID (PK, FK), articleID (PK, FK)</b></li></p>
+        </div>
+    <p>База данных в 3NF!</p>
+{% endblock %}
+
+{% block content2 %}
+    <img src="https://github.com/mbogautdinov/FCL_projects/blob/main/db_uml.png?raw=1" alt="UML-модель бд-шки" width="400" height="200">
+    <p style="text-align:center;"><i>Это почти UML-модель: только стрелочки не в&nbsp;UML-нотации</i></p>
+    <br>
+    <h5>Описание приложения</h5>
+    <p>Вот такие файлы и папки входят в HW3</p>
+    <ul><b>app.py</b><br>&mdash; здесь лежит основная часть приложения</ul>
+    <ul><b>archdaily_sample.csv</b><br>&mdash; а тут выборка, на основе которой составлена база данных</ul>
+    <ul><b>HW3_Bogautdinov_232.ipynb</b><br>&mdash; здесь маленькая часть описания работы</ul>
+    <ul><b>models.py</b><br>&mdash; здесь база данных описана через питоновские классы</ul>
+    <ul><b>templates</b>
+        <ul>base.html</ul>
+        <ul>form.html</ul>
+        <ul>index.html</ul>
+        <ul>stat.html</ul>
+        <br>&mdash; это отдельные динамические части сайта
+    </ul>
+    <ul><b>static</b>
+        <ul>db_uml.png</ul>
+        <ul>styles.css</ul>
+        <br>&mdash; а тут нединамические стили и картинка
+    </ul>
+{% endblock %}

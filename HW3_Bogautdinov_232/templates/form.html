@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} Анкетка {% endblock %}
+
+{% block content1 %}
+    <form action='/process' method='GET'>
+        <fieldset>
+            <legend><b>Можете добавить любую новость из мира архитектуры!</b></legend>
+            <p>Здесь вы можете добавить некоторую новость, касающуюся архитектуры. До этого мы собирали их с сайта <a href="https://www.archdaily.com/">Archdaily</a>, но в целом вы можете абсолютно рандомную новость сюда закинуть. Пользуйтесь на здоровье и не болейте!</p>
+            Ссылка на статью:<br>
+            <input type="text" name="article_link">
+            <br><br>Автор статьи (или перечислите через запятую):<br>
+            <input type="text" name="article_author" placeholder="Pushkin" value="Alexander Pushkin">
+            <br><br>Дата написания статьи:<br>
+            <input type="date" name="article_date">
+            <br><br>Перечислите теги статьи через запятую:<br>
+            <input type="text" name="article_tags" placeholder="Staraya Basmannaya, Kitay-Gorod, Moscow">
+            <br><br>Введите заголовок:<br>
+            <input type="text" name="article_title">
+            <br><br>И вставьте сюда сам текст статьи:<br>
+            <textarea name="article_text"></textarea>
+            <br><br><input type="submit" value="Submit">
+            <br>Обязательно засабмитьте!
+        </fieldset>
+    </form>
+{% endblock %}
+
+{% block content2 %}
+    <p>место рядом с анкетой &mdash; пусть здесь будет текст песни ABBA:</p>
+    {%for row in song%}
+        {{row}}
+        <br>
+    {%endfor%}
+{% endblock %}
